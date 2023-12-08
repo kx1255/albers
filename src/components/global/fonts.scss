@@ -1,0 +1,28 @@
+:root {
+    font-family: 'Helvetica';
+}
+
+h1,
+h3 {
+    color: var(--Black, #000);
+}
+
+h1 {
+    /* Heading */
+    font: 800 3.2rem/1 'Helvetica';
+}
+
+h3 {
+    /* subtitle/large */
+    font: 500 1.8rem/2 'Helvetica';
+    font-weight: 800;
+    letter-spacing: 0;
+
+}
+
+p {
+    /* body/large */
+    font: 400 1em/2 'Helvetica';
+    color: var(--Dark-Grey, #333);
+    letter-spacing: 0.5px;
+}

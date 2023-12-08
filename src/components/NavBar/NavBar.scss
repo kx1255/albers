@@ -1,0 +1,39 @@
+@import '../global/colors.scss';
+@import '../global/fonts.scss';
+
+nav {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.Menu {
+    display: flex;
+}
+
+.Menu-Entry {
+    margin-left: 10px;
+}
+
+a {
+    color: $light-grey;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+        color: $dark-grey;
+    }
+
+    &.active {
+        color: black;
+    }
+}
+

@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import NavBar from './components/NavBar/NavBar';
+import HowToUse from './pages/Color_identification/how_to_use.js';
+import Settings from './pages/Color_identification/settings.js';
+import Overview from './pages/Color_in_use/overview';
+import Inuse from './pages/Color_in_use/inuse';
+import Home from './pages/Color_theory/Home';
+import ActualMixing from './pages/Color_identification/ActualMixing.js';
+import LoadingAnimation from './components/global/LoadingAnimation.js';
+import './components/global/App.scss';
 
-function App() {
+
+const App = () => {
+  const [isLoaded, setIsLoaded] = useState(Math.round(Math.random()));
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, Math.random() * 2000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // Get the current URL path
+  const currentPath = window.location.pathname;
+
+  let content;
+
+  switch (currentPath) {
+    case '/home':
+      content = <Home />;
+      break;
+    case '/how-to-use':
+      content = <HowToUse />;
+      break;
+    case '/settings':
+      content = <Settings />;
+      break;
+    case '/overview':
+      content = <Overview />;
+      break;
+    case '/inuse':
+      content = <Inuse />;
+      break;
+    case '/ActualMixing':
+      content = <ActualMixing />;
+      break;
+    default:
+      content = <div>Default Component</div>;
+      break;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!isLoaded && <LoadingAnimation />}
+      <NavBar />
+      <div className={`content ${isLoaded ? 'fade-in' : ''}`}>{content}</div>
+    </>
   );
-}
+};
 
 export default App;

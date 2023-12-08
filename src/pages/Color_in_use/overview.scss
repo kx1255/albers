@@ -1,0 +1,20 @@
+.horizontal {
+    display: flex;
+    align-items: flex-start;
+    gap: 64px;
+    align-self: stretch;
+}
+
+.artwork_card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.artwork_title {
+
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.15px;
+}

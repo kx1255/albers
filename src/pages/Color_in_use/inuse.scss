@@ -1,0 +1,13 @@
+.artwork {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.centered-image {
+  display: flex;
+  justify-content: center;
+  max-width: 40vmax;
+}
