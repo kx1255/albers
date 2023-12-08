@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import d3 from 'd3';
 import mixbox from 'mixbox';
 const svgWidth = window.innerWidth;
