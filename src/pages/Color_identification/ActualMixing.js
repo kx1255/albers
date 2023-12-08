@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import * as mixbox from 'mixbox';
+import mixbox from 'mixbox';
 const svgWidth = window.innerWidth;
 const svgHeight = 650;
 
