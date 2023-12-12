@@ -30,10 +30,21 @@ h3 {
     animation: floatIn 0.8s ease-in-out;
 
 }
+h6 {
+    font: 800 3.2rem/1 'Helvetica';
+    font-weight: 400;
+    font-size: 3rem;
+    line-height: 4rem;
+    letter-spacing: -.01rem;
+    animation: floatIn 0.8s ease-in-out;
+
+}
 
 p {
-    /* body/large */
-    font: 400 1em/2 'Helvetica';
+    font: 800 3.2rem/1 'Helvetica';
     color: $dark-grey;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.15rem;
     letter-spacing: 0.5px;
 }

@@ -6,7 +6,9 @@ import Overview from './pages/Color_in_use/overview';
 import Inuse from './pages/Color_in_use/inuse';
 import Home from './pages/Color_theory/Home';
 import About from './pages/About';
-import ActualMixing from './pages/Color_identification/ActualMixing.js';
+import Easy from './pages/Color_identification/ActualMixing/easy';
+import Medium from './pages/Color_identification/ActualMixing/medium';
+import Hard from './pages/Color_identification/ActualMixing/hard';
 import LoadingAnimation from './components/global/LoadingAnimation.js';
 import './components/global/App.scss';
 
@@ -45,11 +47,17 @@ const App = () => {
     case '/inuse':
       content = <Inuse />;
       break;
-    case '/ActualMixing':
-      content = <ActualMixing />;
+    case '/easy':
+      content = <Easy />;
+      break;
+    case '/medium':
+      content = <Medium />;
+      break;
+    case '/hard':
+      content = <Hard />;
       break;
     default:
-      content = <Home/>;
+      content = <Home />;
       break;
   }
 
