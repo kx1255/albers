@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import * as mixbox from './mixbox.esm.js';
+
 const svgWidth = window.innerWidth;
 const svgHeight = 650;
 
@@ -14,7 +15,6 @@ const gapSize = 10;
 const padding = (svgWidth - (numCols * (rectSize + gapSize + buttonSize) + gapSize)) / 2;
 const toprectheight = svgHeight / 2;
 const toprectwidth = svgWidth / 4;
-
 
 const colors = [
     [249, 250, 249],//white
@@ -43,13 +43,15 @@ for (let i = 0; i < colors.length; i++) {
 }
 
 function ActualMixing() {
+    const svgRef = useRef(null);
+
     useEffect(() => {
-        setup();
+        const svg = svgRef.current;
+        setup(svg);
     }, []);
 
-    const setup = () => {
-        let svg = d3.select('#svg-container')
-            .append('svg')
+    const setup = (svg) => {
+        d3.select('svg')
             .attr('width', svgWidth)
             .attr('height', svgHeight);
 
@@ -61,28 +63,32 @@ function ActualMixing() {
         ];
 
         // Random color rect
-        let randomColorRect = svg.append("rect")
+        d3.select(svg)
+            .append("rect")
             .attr("x", svgWidth / 2 - toprectwidth)
             .attr("y", 10 + gapSize)
             .attr("width", toprectwidth)
             .attr("height", toprectheight)
             .attr("fill", `rgb(${randomColor[0]}, ${randomColor[1]}, ${randomColor[2]})`)
-            .attr("stroke", "black")
-            .attr("stroke-width", 1);
+            .attr('stroke', 'gray')
+            .attr('stroke-width', 0.25);
 
         // Mixed color rect
-        let mixedColorRect = svg.append("rect")
+        d3.select(svg)
+            .append("rect")
             .attr("class", "mixed-color-rect")
             .attr("x", svgWidth / 2)
             .attr("y", 10 + gapSize)
             .attr("width", toprectwidth)
             .attr("height", toprectheight)
-            .attr("fill", "white")
+            .attr("fill", 'white')
 
-            .attr("stroke", "black")
-            .attr("stroke-width", 1);
+            .attr('stroke', 'gray')
+            .attr('stroke-width', 0.25);
 
-        const colorRects = svg.selectAll(".color-rect")
+        // Color rects
+        d3.select(svg)
+            .selectAll(".color-rect")
             .data(colors)
             .enter()
             .append("rect")
@@ -101,7 +107,9 @@ function ActualMixing() {
             .attr('stroke', 'gray')
             .attr('stroke-width', 0.25);
 
-        const plusButtons = svg.selectAll(".plus-button")
+        // plusButtons = 
+        d3.select(svg)
+            .selectAll(".plus-button")
             .data(mix_t)
             .enter()
             .append("foreignObject")
@@ -120,10 +128,13 @@ function ActualMixing() {
             .on("click", (d, i) => {
                 clickcount++;
                 i.value = i.value + 1;
-                updateColor(mixedColorRect);
+
+                updateColor();
             });
 
-        const minusButtons = svg.selectAll(".minus-button")
+        // minusButtons 
+        d3.select(svg)
+            .selectAll(".minus-button")
             .data(mix_t)
             .enter()
             .append("foreignObject")
@@ -140,39 +151,50 @@ function ActualMixing() {
             .attr("height", buttonSize)
             .html("<input type='button' value='-' style='width: 100%; height: 100%;'>")
             .on("click", (d, i) => {
-                clickcount--;
+                if (clickcount > 0) {
+                    clickcount--;
+                }
+                else { clickcount = 0; }
+
                 if (i.value > 0) {
                     i.value = i.value - 1;
                 } else {
                     i.value = 0;
                 }
-                // Call the updateColor function to recalculate the mixed color
-                updateColor(mixedColorRect);
+                updateColor();
+
             });
-    };
 
-    function updateColor(rect) {
-        let mixedColor;
-
-        let latent_mix = [0, 0, 0, 0, 0, 0, 0];
-        for (let j = 0; j < mix_t.length; j++) {
-            if (mix_t[j].value) {
-                let latent = mixbox.default.rgbToLatent(colors[j]);
-                let t = mix_t[j].value / clickcount;
-
-                for (let k = 0; k < latent.length; k++) {
-                    latent_mix[k] += latent[k] * t;
-                }
+        function updateColor() {
+            if (clickcount === 0) {
+                return 'rgb(255, 255, 255)';
             }
-        }
+            else {
+                let latent_mix = [0, 0, 0, 0, 0, 0, 0];
+                for (let j = 0; j < mix_t.length; j++) {
+                    if (mix_t[j].value) {
+                        let latent = mixbox.default.rgbToLatent(colors[j]);
+                        let t = mix_t[j].value / clickcount;
 
-        mixedColor = mixbox.default.latentToRgb(latent_mix);
+                        for (let k = 0; k < latent.length; k++) {
+                            latent_mix[k] += latent[k] * t;
+                        }
+                    }
+                }
 
-        rect.attr('fill', mixedColor);
+                let mix = mixbox.default.latentToRgb(latent_mix);
+                d3.selectAll(".mixed-color-rect")
+                    .attr("fill", `rgb(${mix[0]}, ${mix[1]}, ${mix[2]})`);
+
+            }
+        };
     };
+
 
     return (
-        <div id="svg-container" />
+        <div >
+            <svg ref={svgRef} width={window.innerWidth} height={600} />
+        </div>
     );
 }
 
