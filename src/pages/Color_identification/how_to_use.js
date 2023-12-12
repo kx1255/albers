@@ -9,8 +9,8 @@ function HowToUse() {
                 <h3>How to Use</h3>
                 <p>
                 <br />
-                  The Color Identification Tool lets you test your sensitivity towards colors.<br /><br />
-                  Click on the arrows to add colors and see how close you can get to the given color before time runs out.<br /><br /><br /><br />
+                  The Color Identification Tool lets you test your sensitivity towards colors.
+                  Click on the arrows to add colors and see how close you can get to the given color before time runs out.
                 </p>
                 <a href="/settings"  className='rounded'>Try it out!</a>
             </div>
