@@ -8,11 +8,9 @@ const svgHeight = 650;
 const mix_t = [];
 var clickcount = 0;
 
-const numCols = 5;
 const rectSize = 50;
 const buttonSize = 25;
 const gapSize = 10;
-const padding = (svgWidth - (numCols * (rectSize + gapSize + buttonSize) + gapSize)) / 2;
 const toprectheight = svgHeight / 2;
 const toprectwidth = svgWidth / 4;
 
@@ -31,6 +29,8 @@ for (let i = 0; i < colors.length; i++) {
         value: 0
     };
 }
+const padding = (svgWidth - (colors.length * (rectSize + gapSize + buttonSize) + gapSize)) / 2;
+
 
 function Hard() {
     const svgRef = useRef(null);
@@ -84,11 +84,11 @@ function Hard() {
             .append("rect")
             .attr("class", "color-rect")
             .attr("x", (d, i) => {
-                const col = i % numCols;
+                const col = i % colors.length;
                 return col * (rectSize + gapSize + buttonSize) + padding;
             })
             .attr("y", (d, i) => {
-                const row = Math.floor(i / numCols);
+                const row = Math.floor(i / colors.length);
                 return row * (rectSize + gapSize + buttonSize) + buttonSize + toprectheight + gapSize;
             })
             .attr("width", rectSize)
@@ -105,11 +105,11 @@ function Hard() {
             .append("foreignObject")
             .attr("class", "plus-button")
             .attr("x", (d, i) => {
-                const col = i % numCols;
+                const col = i % colors.length;
                 return col * (rectSize + gapSize + buttonSize) + padding + rectSize;
             })
             .attr("y", (d, i) => {
-                const row = Math.floor(i / numCols);
+                const row = Math.floor(i / colors.length);
                 return row * (rectSize + gapSize + buttonSize) + buttonSize + toprectheight + gapSize;
             })
             .attr("width", buttonSize)
@@ -130,11 +130,11 @@ function Hard() {
             .append("foreignObject")
             .attr("class", "minus-button")
             .attr("x", (d, i) => {
-                const col = i % numCols;
+                const col = i % colors.length;
                 return col * (rectSize + gapSize + buttonSize) + padding + rectSize;
             })
             .attr("y", (d, i) => {
-                const row = Math.floor(i / numCols);
+                const row = Math.floor(i / colors.length);
                 return row * (rectSize + gapSize + buttonSize) + buttonSize + toprectheight + gapSize + buttonSize;
             })
             .attr("width", buttonSize)

@@ -8,11 +8,9 @@ const svgHeight = 650;
 const mix_t = [];
 var clickcount = 0;
 
-const numCols = 15;
 const rectSize = 50;
 const buttonSize = 25;
 const gapSize = 10;
-const padding = (svgWidth - (numCols * (rectSize + gapSize + buttonSize) + gapSize)) / 2;
 const toprectheight = svgHeight / 2;
 const toprectwidth = svgWidth / 4;
 
@@ -41,6 +39,7 @@ for (let i = 0; i < colors.length; i++) {
         value: 0
     };
 }
+const padding = (svgWidth - (colors.length * (rectSize + gapSize + buttonSize) + gapSize)) / 2;
 
 function Easy() {
     const svgRef = useRef(null);
@@ -61,10 +60,14 @@ function Easy() {
             Math.floor(Math.random() * 256),
             Math.floor(Math.random() * 256)
         ];
+        console.log("old color: " + randomColor);
+
 
         // Random color rect
         d3.select(svg)
             .append("rect")
+            .attr("class", "rand-color-rect")
+            .attr("id", "rand-color-rect")
             .attr("x", svgWidth / 2 - toprectwidth)
             .attr("y", 10 + gapSize)
             .attr("width", toprectwidth)
@@ -86,6 +89,43 @@ function Easy() {
             .attr('stroke', 'gray')
             .attr('stroke-width', 0.25);
 
+            // Refresh button
+        d3.select(svg)
+            .append("foreignObject")
+            .attr("class", "refresh-button")
+            .attr("x", svgWidth / 2 + toprectwidth + 10)
+            .attr("y", 10 + gapSize)
+            .attr("width", rectSize / 2)
+            .attr("height", rectSize / 2)
+            .attr("fill", "gray")
+            .html("<input type='button' value=&#10227 style='width: 100%; height: 100%;'>")
+            .on("click", refreshColors);
+
+        function refreshColors() {
+            // Generate a new random color
+            const newColor = [
+                Math.floor(Math.random() * 256),
+                Math.floor(Math.random() * 256),
+                Math.floor(Math.random() * 256)
+            ];
+            console.log("new color: " + newColor);
+
+            d3.select("#rand-color-rect")
+                .attr("fill", `rgb(${newColor[0]}, ${newColor[1]}, ${newColor[2]})`);
+
+            // Reset the mixed color rect
+            d3.select(".mixed-color-rect")
+                .attr("fill", "white");
+
+            // Reset mix_t values
+            mix_t.forEach((item) => {
+                item.value = 0;
+            });
+
+            // Reset clickcount
+            clickcount = 0;
+        }
+
         // Color rects
         d3.select(svg)
             .selectAll(".color-rect")
@@ -94,11 +134,11 @@ function Easy() {
             .append("rect")
             .attr("class", "color-rect")
             .attr("x", (d, i) => {
-                const col = i % numCols;
+                const col = i % colors.length;
                 return col * (rectSize + gapSize + buttonSize) + padding;
             })
             .attr("y", (d, i) => {
-                const row = Math.floor(i / numCols);
+                const row = Math.floor(i / colors.length);
                 return row * (rectSize + gapSize + buttonSize) + buttonSize + toprectheight + gapSize;
             })
             .attr("width", rectSize)
@@ -115,11 +155,11 @@ function Easy() {
             .append("foreignObject")
             .attr("class", "plus-button")
             .attr("x", (d, i) => {
-                const col = i % numCols;
+                const col = i % colors.length;
                 return col * (rectSize + gapSize + buttonSize) + padding + rectSize;
             })
             .attr("y", (d, i) => {
-                const row = Math.floor(i / numCols);
+                const row = Math.floor(i / colors.length);
                 return row * (rectSize + gapSize + buttonSize) + buttonSize + toprectheight + gapSize;
             })
             .attr("width", buttonSize)
@@ -140,11 +180,11 @@ function Easy() {
             .append("foreignObject")
             .attr("class", "minus-button")
             .attr("x", (d, i) => {
-                const col = i % numCols;
+                const col = i % colors.length;
                 return col * (rectSize + gapSize + buttonSize) + padding + rectSize;
             })
             .attr("y", (d, i) => {
-                const row = Math.floor(i / numCols);
+                const row = Math.floor(i / colors.length);
                 return row * (rectSize + gapSize + buttonSize) + buttonSize + toprectheight + gapSize + buttonSize;
             })
             .attr("width", buttonSize)
