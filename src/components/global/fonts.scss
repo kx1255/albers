@@ -1,28 +1,39 @@
+@import './colors.scss';
+
 :root {
     font-family: 'Helvetica';
-}
-
-h1,
-h3 {
-    color: var(--Black, #000);
+    --Black: #000;
+    --White: #fff;
 }
 
 h1 {
     /* Heading */
     font: 800 3.2rem/1 'Helvetica';
+    letter-spacing: -.01rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 6.5rem;
+    font-weight: 400;
+    line-height: 7.5rem;
+    animation: floatIn 1s ease-in-out;
+
+
 }
 
 h3 {
     /* subtitle/large */
-    font: 500 1.8rem/2 'Helvetica';
-    font-weight: 800;
-    letter-spacing: 0;
+    font: 800 3.2rem/1 'Helvetica';
+    font-weight: 400;
+    font-size: 4.5rem;
+    line-height: 5rem;
+    letter-spacing: -.01rem;
+    animation: floatIn 0.8s ease-in-out;
 
 }
 
 p {
     /* body/large */
     font: 400 1em/2 'Helvetica';
-    color: var(--Dark-Grey, #333);
+    color: $dark-grey;
     letter-spacing: 0.5px;
 }

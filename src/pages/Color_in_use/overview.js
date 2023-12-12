@@ -21,7 +21,7 @@ function Overview() {
         <div className="Content">
             <div className="ContentSection">
                 <div className="first">
-                    <h1>Color in Use</h1>
+                    <h3>Color in Use</h3>
                     <p>
                         The Color in Use Tool lets you see how colors are being used in real paintings.
                         <br /><br />

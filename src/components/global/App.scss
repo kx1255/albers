@@ -1,6 +1,20 @@
+@import './colors.scss';
+
 .content {
     opacity: 0;
     transition: opacity 0.5s;
+}
+
+@keyframes floatIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .fade-in {
@@ -29,6 +43,7 @@
     isolation: isolate;
     align-items: flex-start;
     box-sizing: border-box;
+
 }
 
 .first {

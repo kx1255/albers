@@ -1,5 +1,5 @@
-@import '../global/colors.scss';
 @import '../global/fonts.scss';
+@import '../global/colors.scss';
 
 nav {
     background-color: white;
@@ -8,11 +8,11 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
 }
 
 .Title {
     font-size: 1.5rem;
-    font-weight: bold;
 }
 
 .Menu {

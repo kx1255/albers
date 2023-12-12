@@ -6,7 +6,7 @@ function HowToUse() {
   return (
         <div className="ContentSection">
             <div className="first">
-                <h1>How to Use</h1>
+                <h3>How to Use</h3>
                 <p>
                 <br />
                   The Color Identification Tool lets you test your sensitivity towards colors.<br /><br />

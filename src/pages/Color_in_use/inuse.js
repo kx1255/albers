@@ -133,16 +133,21 @@ function colorClicker(svg, handleColorSelection) {
         .attr('y', 20)
         .attr('width', rectSize)
         .attr('height', rectSize)
-        .attr('fill', (d) => `rgb(${d[0]}, ${d[1]}, ${d[2]})`);
+        .attr('fill', (d) => `rgb(${d[0]}, ${d[1]}, ${d[2]})`)
+        .attr('stroke', 'gray')
+        .attr('stroke-width', 0.25);
 
     d3.select(svg)
         .selectAll('.color-rect')
         .on('click', (event, d) => {
             const selectedColor = d;
             // Update the UI to indicate the selected color
-            d3.select(svg).selectAll('.color-rect').attr('opacity', 1); // Reset opacity for all color rectangles
-            d3.select(event.target).attr('opacity', 0.5); // Dim the selected color
-            // Send the selected color to the parent component for further processing
+            d3.select(svg)
+                .selectAll('.color-rect')
+                .attr('opacity', 1);
+            d3.select(event.target)
+                .attr('opacity', 0.5);
+                
             handleColorSelection(selectedColor);
         });
 }

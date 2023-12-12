@@ -8,7 +8,7 @@ function Settings() {
         <div className="Content">
             <div className='vertical'>
                 <div className='row'>
-                    <h1 className='title'>Color Identification </h1>
+                    <h3 className='title'>Color Identification </h3>
                     <a href="/how-to-use">?</a>
                 </div>
 

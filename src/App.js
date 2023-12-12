@@ -5,6 +5,7 @@ import Settings from './pages/Color_identification/settings.js';
 import Overview from './pages/Color_in_use/overview';
 import Inuse from './pages/Color_in_use/inuse';
 import Home from './pages/Color_theory/Home';
+import About from './pages/About';
 import ActualMixing from './pages/Color_identification/ActualMixing.js';
 import LoadingAnimation from './components/global/LoadingAnimation.js';
 import './components/global/App.scss';
@@ -29,8 +30,8 @@ const App = () => {
   let content;
 
   switch (currentPath) {
-    case '/home':
-      content = <Home />;
+    case '/about':
+      content = <About />;
       break;
     case '/how-to-use':
       content = <HowToUse />;
@@ -48,7 +49,7 @@ const App = () => {
       content = <ActualMixing />;
       break;
     default:
-      content = <div>Default Component</div>;
+      content = <Home/>;
       break;
   }
 
