@@ -14,21 +14,11 @@ function Settings() {
 
                 <div className="button_box">
                     <p>Difficulty</p>
-                    <span className='rounded'>Easy</span>
-                    <span className='rounded'>Medium</span>
-                    <span className='rounded'>Hard</span>
+                    <a href='/easy'><span className='rounded'>Easy</span></a>
+                    <a href='/medium'><span className='rounded'>Medium</span></a>
+                    <a href='/hard'><span className='rounded'>Hard</span></a>
                 </div>
 
-                <div className="button_box">
-                    <p>Timer</p>
-                    <span className='rounded'>None</span>
-                    <span className='rounded'>30 seconds</span>
-                    <span className='rounded'>60 seconds</span>
-                    <span className='rounded'>90 seconds</span>
-                </div>
-                <a href="/ActualMixing" className="rounded">
-                    Let's Begin!
-                </a>
             </div>
         </div>
 

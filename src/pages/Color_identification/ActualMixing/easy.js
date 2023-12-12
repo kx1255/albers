@@ -42,7 +42,7 @@ for (let i = 0; i < colors.length; i++) {
     };
 }
 
-function ActualMixing() {
+function Easy() {
     const svgRef = useRef(null);
 
     useEffect(() => {
@@ -199,4 +199,4 @@ function ActualMixing() {
 }
 
 
-export default ActualMixing;
+export default Easy;
