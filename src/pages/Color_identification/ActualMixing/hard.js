@@ -55,6 +55,7 @@ function Hard() {
         // Random color rect
         d3.select(svg)
             .append("rect")
+            .attr("class", "rand-color-rect")
             .attr("x", svgWidth / 2 - toprectwidth)
             .attr("y", 10 + gapSize)
             .attr("width", toprectwidth)
@@ -75,6 +76,43 @@ function Hard() {
 
             .attr('stroke', 'gray')
             .attr('stroke-width', 0.25);
+
+        // Refresh button
+        d3.select(svg)
+            .append("foreignObject")
+            .attr("class", "refresh-button")
+            .attr("x", svgWidth / 2 + toprectwidth + 10)
+            .attr("y", 10 + gapSize)
+            .attr("width", rectSize / 2)
+            .attr("height", rectSize / 2)
+            .attr("fill", "gray")
+            .html("<input type='button' value=&#10227 style='width: 100%; height: 100%;'>")
+            .on("click", refreshColors);
+
+        function refreshColors() {
+            // Generate a new random color
+            const newColor = [
+                Math.floor(Math.random() * 256),
+                Math.floor(Math.random() * 256),
+                Math.floor(Math.random() * 256)
+            ];
+            console.log("new color: " + newColor);
+
+            d3.select("#rand-color-rect")
+                .attr("fill", `rgb(${newColor[0]}, ${newColor[1]}, ${newColor[2]})`);
+
+            // Reset the mixed color rect
+            d3.select(".mixed-color-rect")
+                .attr("fill", "white");
+
+            // Reset mix_t values
+            mix_t.forEach((item) => {
+                item.value = 0;
+            });
+
+            // Reset clickcount
+            clickcount = 0;
+        }
 
         // Color rects
         d3.select(svg)

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import * as mixbox from './mixbox.esm.js';
 
+
 const svgWidth = window.innerWidth;
 const svgHeight = 650;
 
@@ -85,11 +86,10 @@ function Easy() {
             .attr("width", toprectwidth)
             .attr("height", toprectheight)
             .attr("fill", 'white')
-
             .attr('stroke', 'gray')
             .attr('stroke-width', 0.25);
 
-            // Refresh button
+        // Refresh button
         d3.select(svg)
             .append("foreignObject")
             .attr("class", "refresh-button")
@@ -100,6 +100,16 @@ function Easy() {
             .attr("fill", "gray")
             .html("<input type='button' value=&#10227 style='width: 100%; height: 100%;'>")
             .on("click", refreshColors);
+
+        //color distance text
+        d3.select(svg)
+            .append("text")
+            .attr("class", "color-distance")
+            .attr("x", svgWidth / 2 + toprectwidth + 10)
+            .attr("y", 10 + gapSize + rectSize + 10)
+            .attr("font-size", "12px")
+            .attr("fill", "black");
+
 
         function refreshColors() {
             // Generate a new random color
@@ -204,6 +214,7 @@ function Easy() {
                 updateColor();
 
             });
+
 
         function updateColor() {
             if (clickcount === 0) {

@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "color-convert": "^2.0.1",
     "color-diff": "^1.4.0",
+    "color-difference": "^0.3.4",
     "com.scrtwpns.mixbox": "github:scrtwpns/mixbox#upm",
     "d3": "^7.8.5",
     "delta-e": "^0.0.8",
