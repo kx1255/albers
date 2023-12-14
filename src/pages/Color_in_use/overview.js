@@ -1,19 +1,19 @@
 import React from 'react';
 import '../../components/global/button.scss';
 import './overview.scss';
-import sample from '../../assets/images/sample.png';
-import Picasso from '../../assets/images/Picasso.png';
-import Murillo from '../../assets/images/Murillo.jpeg';
-import Hiroshige from '../../assets/images/Hiroshige.png';
-import Henri from '../../assets/images/Henri.jpeg';
-import Munch from '../../assets/images/Munch.jpg';
-import SherGil from '../../assets/images/SherGil.jpg';
-import Basquiat from '../../assets/images/Basquiat.png';
-import Dali from '../../assets/images/Dali.jpg';
-import Sargent from '../../assets/images/Sargent.jpeg';
-import Okeefe from '../../assets/images/OKEEFE.jpg';
-import CASSATT from '../../assets/images/Cassatt.jpg';
-import KAHLO from '../../assets/images/Kahlo.png';
+import sample from '../../assets/sample.png';
+import Picasso from '../../assets/Picasso.png';
+import Murillo from '../../assets/Murillo.jpeg';
+import Hiroshige from '../../assets/Hiroshige.png';
+import Henri from '../../assets/Henri.jpeg';
+import Munch from '../../assets/Munch.jpg';
+import SherGil from '../../assets/SherGil.jpg';
+import Basquiat from '../../assets/Basquiat.png';
+import Dali from '../../assets/Dali.jpg';
+import Sargent from '../../assets/Sargent.jpeg';
+import Okeefe from '../../assets/OKEEFE.jpg';
+import CASSATT from '../../assets/Cassatt.jpg';
+import KAHLO from '../../assets/Kahlo.png';
 
 
 

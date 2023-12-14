@@ -1,21 +1,27 @@
 import React from 'react';
 import '../../components/global/button.scss';
-import identificationMainFrameImage from '../../assets/images/identification_main_frame_1.png';
+import tool from '../../assets/tool.png';
+
 
 function HowToUse() {
   return (
-        <div className="ContentSection">
-            <div className="first">
-                <h3>How to Use</h3>
-                <p>
-                <br />
-                  The Color Identification Tool lets you test your sensitivity towards colors.
-                  Click on the arrows to add colors and see how close you can get to the given color before time runs out.
-                </p>
-                <a href="/settings"  className='rounded'>Try it out!</a>
-            </div>
-            <img src={identificationMainFrameImage} alt="Identification Main Frame" loading="lazy" />
-          </div>
+    <div className="ContentSection">
+      <div className="first">
+        <h3>How to Use</h3>
+        <p>
+          <br />
+          <br />
+          The Color Identification Tool lets you test your sensitivity towards colors.
+          Click on the arrows to add colors and see how close you can get to the given color.
+        </p>
+        <div className="ContentSection" style={{justifyContent: 'space-between'}}>
+          <a href='/easy'><span className='rounded'>Easy</span></a>
+          <a href='/medium'><span className='rounded'>Medium</span></a>
+          <a href='/hard'><span className='rounded'>Hard</span></a>
+        </div>
+      </div>
+      <img src={tool} alt="Identification Main Frame" width="50%" loading="lazy" />
+    </div>
   );
 }
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from './components/NavBar/NavBar';
 import HowToUse from './pages/Color_identification/how_to_use.js';
-import Settings from './pages/Color_identification/settings.js';
 import Overview from './pages/Color_in_use/overview';
 import Inuse from './pages/Color_in_use/inuse';
 import Home from './pages/Color_theory/Home';
@@ -37,9 +36,6 @@ const App = () => {
       break;
     case '/how-to-use':
       content = <HowToUse />;
-      break;
-    case '/settings':
-      content = <Settings />;
       break;
     case '/overview':
       content = <Overview />;
