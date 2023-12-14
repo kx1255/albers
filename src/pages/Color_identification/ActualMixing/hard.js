@@ -112,6 +112,35 @@ function Hard() {
 
             // Reset clickcount
             clickcount = 0;
+            updateStackedBarChart();
+
+        }
+        function updateStackedBarChart() {
+            d3.select('.stacked-bar-chart').remove();
+
+            const colorScale = d3.scaleLinear()
+                .domain([0, clickcount])
+                .range([0, toprectheight]);
+
+            let accumulatedHeight = 0;
+
+            d3.select('svg')
+                .append('g')
+                .attr('class', 'stacked-bar-chart')
+                .selectAll('rect')
+                .data(mix_t)
+                .enter()
+                .append('rect')
+                .attr("x", svgWidth / 2 + toprectwidth + 10)
+                .attr("y", (d) => {
+                    const rectHeight = colorScale(d.value);
+                    const y = accumulatedHeight + 10 + gapSize;
+                    accumulatedHeight += rectHeight;
+                    return toprectheight - y - rectHeight;
+                })
+                .attr('width', 20)
+                .attr('height', (d) => colorScale(d.value))
+                .attr('fill', (d) => `rgb(${d.key[0]}, ${d.key[1]}, ${d.key[2]})`);
         }
 
         // Color rects
@@ -213,6 +242,8 @@ function Hard() {
                 let mix = mixbox.default.latentToRgb(latent_mix);
                 d3.selectAll(".mixed-color-rect")
                     .attr("fill", `rgb(${mix[0]}, ${mix[1]}, ${mix[2]})`);
+
+                updateStackedBarChart();
 
             }
         };
