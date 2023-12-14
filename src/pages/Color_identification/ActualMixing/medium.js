@@ -89,7 +89,7 @@ function Medium() {
         d3.select(svg)
             .append("foreignObject")
             .attr("class", "refresh-button")
-            .attr("x", svgWidth / 2 + toprectwidth + 10)
+            .attr("x", svgWidth / 2 + toprectwidth + 40)
             .attr("y", 10 + gapSize)
             .attr("width", rectSize / 2)
             .attr("height", rectSize / 2)
@@ -131,6 +131,7 @@ function Medium() {
                 .range([0, toprectheight]);
 
             let accumulatedHeight = 0;
+            console.log(clickcount);
 
             d3.select('svg')
                 .append('g')
@@ -250,7 +251,7 @@ function Medium() {
                 let mix = mixbox.default.latentToRgb(latent_mix);
                 d3.selectAll(".mixed-color-rect")
                     .attr("fill", `rgb(${mix[0]}, ${mix[1]}, ${mix[2]})`);
-                    
+
                 updateStackedBarChart();
 
 

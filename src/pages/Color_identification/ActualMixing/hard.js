@@ -81,7 +81,7 @@ function Hard() {
         d3.select(svg)
             .append("foreignObject")
             .attr("class", "refresh-button")
-            .attr("x", svgWidth / 2 + toprectwidth + 10)
+            .attr("x", svgWidth / 2 + toprectwidth + 40)
             .attr("y", 10 + gapSize)
             .attr("width", rectSize / 2)
             .attr("height", rectSize / 2)
